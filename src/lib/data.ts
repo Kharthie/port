@@ -8,7 +8,7 @@ export const personalInfo = {
   location: "Tamil Nadu, India",
   email: "kharthieramakrishnan@gmail.com",
   phone: "6382550646",
-  linkedin: "https://linkedin.com/in/kharthieramakrishnan",
+  linkedin: "https://www.linkedin.com/in/kharthie-ramakrishnan-developer/",
   github: "https://github.com/kharthie"
 };
 
