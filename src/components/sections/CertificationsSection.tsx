@@ -2,9 +2,13 @@ import { motion } from 'framer-motion';
 import { certifications } from '@/lib/data';
 import { Award, ExternalLink } from 'lucide-react';
 
-export function CertificationsSection() {
+interface CertificationsSectionProps {
+  className?: string;
+}
+
+export function CertificationsSection({ className = "py-24" }: CertificationsSectionProps) {
   return (
-    <section id="certifications" className="py-24 relative bg-card/30">
+    <section id="certifications" className={`relative bg-card/30 ${className}`}>
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
