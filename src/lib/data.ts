@@ -123,7 +123,7 @@ export const experience = [
 
 export const certifications = [
   {
-    title: "MERN Stack Development - Guvi Pvt Ltd",
+    title: "Guvi Pvt Ltd: MERN Stack Development",
     credentialUrl: "https://www.guvi.in/verify-certificate?id=4566O31R815k364CgQ"
   },
   {
@@ -131,20 +131,28 @@ export const certifications = [
     credentialUrl: "https://www.skills.google/public_profiles/bd7d8b32-6571-4499-853f-df0fa863465e/badges/10294849?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share"
   },
   {
-    title: "Generative AI fundamentals",
+    title: "Google Cloud: Generative AI fundamentals",
     credentialUrl: "https://www.skills.google/public_profiles/bd7d8b32-6571-4499-853f-df0fa863465e/badges/10287268"
   },
   {
-    title: "Responsible AI",
+    title: "Google Cloud: Responsible AI",
     credentialUrl: "https://www.skills.google/public_profiles/bd7d8b32-6571-4499-853f-df0fa863465e/badges/10418073?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share"
   },
   {
-    title: "Image Generation with AI",
+    title: "Google Cloud: Image Generation with AI",
     credentialUrl: "https://www.skills.google/public_profiles/bd7d8b32-6571-4499-853f-df0fa863465e/badges/10462355?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share"
   },
   {
-    title: "Applying AI Principles with AI Cloud",
+    title: "Google Cloud: Applying AI Principles with AI Cloud",
     credentialUrl: "https://www.skills.google/public_profiles/bd7d8b32-6571-4499-853f-df0fa863465e/badges/16589066?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share"
+  },
+  {
+    title: "Microsoft Learn: Introduction to generative AI and agents",
+    credentialUrl: "https://learn.microsoft.com/en-us/users/kharthier-7224/achievements/h2mqaxd8?ref=https%3A%2F%2Fwww.linkedin.com%2F"
+  },
+  {
+    title: "Microsoft Learn: Introduction to AI concepts",
+    credentialUrl: "https://learn.microsoft.com/en-us/users/kharthier-7224/achievements/4cuu46qk?ref=https%3A%2F%2Fwww.linkedin.com%2F"
   },
   {
     title: "Claude Code in Action",
