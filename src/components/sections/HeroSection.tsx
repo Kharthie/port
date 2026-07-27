@@ -114,7 +114,7 @@ export function HeroSection() {
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button asChild size="lg" variant="outline" className="w-full sm:w-auto border-primary/50 text-primary hover:bg-primary/10 font-medium text-base group">
-              <a href="/Kharthie_R_CV.pdf" download="Kharthie_R_CV.pdf">
+              <a href="/Kharthie_R_Resume.pdf" download="Kharthie_R_Resume.pdf">
                 <Download className="mr-2 h-4 w-4 group-hover:-translate-y-1 transition-transform" />
                 Download Resume
               </a>
