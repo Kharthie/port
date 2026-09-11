@@ -96,7 +96,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap justify-center gap-3 mb-12"
           >
-            {["4+ Years Experience", "10+ Projects Delivered", "AI Powered Solutions", "AWS & Azure Cloud"].map((stat, i) => (
+            {["4+ Years Experience", "6+ Projects Delivered", "AI Powered Solutions", "Azure Cloud & AWS"].map((stat, i) => (
               <span key={i} className="px-4 py-2 rounded-full glass text-sm font-medium border border-border/50 text-foreground/80 hover:text-primary transition-colors hover:border-primary/50">
                 {stat}
               </span>
