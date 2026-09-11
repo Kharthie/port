@@ -53,6 +53,23 @@ export function ExperienceSection() {
                     <p className="text-muted-foreground leading-relaxed">
                       {exp.description}
                     </p>
+                    {exp.projects && (
+                      <div className="mt-6 space-y-5">
+                        {exp.projects.map((project) => (
+                          <div key={project.name}>
+                            <h5 className="mb-2 font-semibold text-foreground">{project.name}</h5>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
+                              {project.highlights.map((highlight) => (
+                                <li key={highlight} className="flex gap-2 leading-relaxed">
+                                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
                 
