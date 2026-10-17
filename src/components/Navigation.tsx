@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { useLocation } from "wouter";
 import { Button } from "./ui/button";
 
 const navLinks = [
@@ -10,12 +9,11 @@ const navLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "AI", href: "#ai" },
-  { name: "Certificates", href: "/certificates" },
+  { name: "Credentials", href: "#certifications" },
   { name: "Contact", href: "#contact" },
 ];
 
 export function Navigation() {
-  const [location, setLocation] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -26,22 +24,21 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      if (location === "/") {
-        const sections = document.querySelectorAll("section[id]");
-        let current = "";
-        sections.forEach((section) => {
-          const sectionTop = (section as HTMLElement).offsetTop;
-          if (window.scrollY >= sectionTop - 100) {
-            current = section.getAttribute("id") || "";
-          }
-        });
-        setActiveSection(current);
-      }
+      // Active section logic
+      const sections = document.querySelectorAll("section[id]");
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = (section as HTMLElement).offsetTop;
+        if (window.scrollY >= sectionTop - 100) {
+          current = section.getAttribute("id") || "";
+        }
+      });
+      setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location]);
+  }, []);
 
   const toggleTheme = () => {
     setIsDark((current) => {
@@ -52,42 +49,16 @@ export function Navigation() {
     });
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-
-    if (href.startsWith("/")) {
-      setLocation(href);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (href.startsWith("#")) {
-      if (location !== "/") {
-        setLocation("/");
-        setTimeout(() => {
-          const element = document.querySelector(href);
-          if (element) {
-            window.scrollTo({
-              top: (element as HTMLElement).offsetTop,
-              behavior: "smooth",
-            });
-          }
-        }, 100);
-      } else {
-        const element = document.querySelector(href);
-        if (element) {
-          window.scrollTo({
-            top: (element as HTMLElement).offsetTop,
-            behavior: "smooth",
-          });
-        }
-      }
+    const element = document.querySelector(href);
+    if (element) {
+      window.scrollTo({
+        top: (element as HTMLElement).offsetTop,
+        behavior: "smooth",
+      });
     }
-  };
-
-  const isLinkActive = (href: string) => {
-    if (href.startsWith("/")) {
-      return location === href || (href === "/certificates" && location === "/certifications");
-    }
-    return location === "/" && activeSection === href.substring(1);
   };
 
   return (
@@ -98,48 +69,47 @@ export function Navigation() {
       />
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "glass py-4" : "bg-transparent py-6"
+          isScrolled ? "glass py-3 shadow-[0_18px_50px_rgba(0,0,0,0.12)]" : "bg-transparent py-6"
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <a
-            href="/"
-            onClick={(e) => handleNavClick(e, location === "/" ? "#hero" : "/")}
-            className="text-xl font-bold tracking-tighter text-foreground flex items-center gap-2"
+            href="#hero"
+            onClick={(e) => scrollTo(e, "#hero")}
+            className="flex items-center gap-3 text-xl font-bold tracking-tight text-foreground"
           >
-            <span className="w-8 h-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-background">
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-lg font-black text-background shadow-[0_12px_30px_rgba(0,245,212,0.18)]">
               R
             </span>
             <span>Kharthie</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const active = isLinkActive(link.href);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-sm font-medium transition-colors hover:text-primary relative ${
-                    active ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  {link.name}
-                  {active && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"
-                    />
-                  )}
-                </a>
-              );
-            })}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => scrollTo(e, link.href)}
+                className={`relative text-sm font-semibold transition-colors hover:text-primary ${
+                  activeSection === link.href.substring(1)
+                    ? "text-primary"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {link.name}
+                {activeSection === link.href.substring(1) && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"
+                  />
+                )}
+              </a>
+            ))}
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="rounded-full"
+              className="rounded-full border border-border/50 bg-card/40"
             >
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
@@ -150,7 +120,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="rounded-full"
+              className="rounded-full border border-border/50 bg-card/40"
             >
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
@@ -171,25 +141,23 @@ export function Navigation() {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 w-full glass border-t border-border/50 py-4 flex flex-col items-center gap-4 shadow-2xl md:hidden"
           >
-            {navLinks.map((link) => {
-              const active = isLinkActive(link.href);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-base font-medium transition-colors hover:text-primary ${
-                    active ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => scrollTo(e, link.href)}
+                className={`text-base font-medium transition-colors hover:text-primary ${
+                  activeSection === link.href.substring(1)
+                    ? "text-primary"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
           </motion.div>
         )}
       </header>
     </>
   );
 }
-
