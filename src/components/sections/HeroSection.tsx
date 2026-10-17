@@ -1,72 +1,32 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { personalInfo } from '@/lib/data';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { ArrowRight, Download, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { SiAngular, SiReact, SiNodedotjs, SiPython, SiDocker, SiMongodb } from 'react-icons/si';
-import { Cloud, Server } from 'lucide-react';
 
-const ROLES = ["Full Stack Developer", "AI Engineer"];
-
-const floatingIcons = [
-  { Icon: SiAngular, color: "#DD0031", delay: 0 },
-  { Icon: SiReact, color: "#61DAFB", delay: 0.2 },
-  { Icon: SiNodedotjs, color: "#339933", delay: 0.4 },
-  { Icon: SiPython, color: "#3776AB", delay: 0.6 },
-  { Icon: Cloud, color: "#FF9900", delay: 0.8 },
-  { Icon: Server, color: "#0078D4", delay: 1.0 },
-  { Icon: SiDocker, color: "#2496ED", delay: 1.2 },
-  { Icon: SiMongodb, color: "#47A248", delay: 1.4 },
-];
+const ROLE = "Gen AI - Full Stack Dev";
 
 export function HeroSection() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentRole = ROLES[roleIndex];
-    const typeSpeed = isDeleting ? 50 : 100;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting && text === currentRole) {
-        setTimeout(() => setIsDeleting(true), 1500);
-      } else if (isDeleting && text === "") {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % ROLES.length);
-      } else {
-        setText(currentRole.substring(0, text.length + (isDeleting ? -1 : 1)));
-      }
-    }, typeSpeed);
-
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, roleIndex]);
-
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
       <ParticleBackground />
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container mx-auto relative z-10">
+        <div className="mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-primary/20 text-primary text-sm font-mono uppercase tracking-wider"
+            className="mb-8 inline-flex items-center gap-3 rounded-full border border-primary/20 bg-background/50 px-5 py-2 text-sm font-semibold text-primary shadow-[0_14px_45px_rgba(0,0,0,0.12)] backdrop-blur"
           >
-            {/* <span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> */}
-            {/* <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> */}
-            {/* System Online */}
+            <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_18px_hsl(var(--primary))]" />
+            {ROLE}
           </motion.div>
 
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-muted-foreground text-lg md:text-xl mb-2 font-mono"
+            className="mb-4 text-sm font-semibold uppercase text-muted-foreground md:text-base"
           >
             Hi, I'm
           </motion.h2>
@@ -75,29 +35,29 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6"
+            className="mb-8 text-5xl font-extrabold tracking-tight md:text-7xl lg:text-8xl"
           >
-            <span className="text-gradient leading-tight">{personalInfo.name}</span>
+            <span className="text-gradient leading-tight">Kharthie</span>
+            <span className="block text-foreground">Ramakrishnan</span>
           </motion.h1>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-2xl md:text-4xl font-medium text-foreground mb-10 h-[40px] md:h-[48px]"
+            className="mx-auto mb-10 max-w-3xl text-xl font-medium leading-relaxed text-muted-foreground md:text-2xl"
           >
-            <span className="opacity-80">Building the future as a </span>
-            <span className="text-secondary border-r-2 border-secondary pr-1 animate-pulse">{text}</span>
-          </motion.div>
+            Building enterprise-grade AI products, cloud platforms, and full-stack applications with a focus on clean architecture and useful automation.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-3 mb-12"
+            className="mb-12 flex flex-wrap justify-center gap-3"
           >
-            {["4+ Years Experience", "10+ Projects Delivered", "AI Powered Solutions", "AWS & Azure Cloud"].map((stat, i) => (
-              <span key={i} className="px-4 py-2 rounded-full glass text-sm font-medium border border-border/50 text-foreground/80 hover:text-primary transition-colors hover:border-primary/50">
+            {["4+ Years Experience", "6+ Projects Delivered", "LLM Workflow Automation", "Azure Cloud & AWS"].map((stat, i) => (
+              <span key={i} className="rounded-full border border-border/70 bg-card/60 px-5 py-2 text-sm font-semibold text-foreground/80 shadow-sm backdrop-blur transition-colors hover:border-primary/50 hover:text-primary">
                 {stat}
               </span>
             ))}
@@ -109,12 +69,12 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-base group" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base group shadow-[0_18px_45px_rgba(0,245,212,0.18)]" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Projects
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button asChild size="lg" variant="outline" className="w-full sm:w-auto border-primary/50 text-primary hover:bg-primary/10 font-medium text-base group">
-              <a href="/Kharthie_R_CV.pdf" download="Kharthie_R_CV.pdf">
+              <a href="/Kharthie_R_Resume.pdf" download="Kharthie_R_Resume.pdf">
                 <Download className="mr-2 h-4 w-4 group-hover:-translate-y-1 transition-transform" />
                 Download Resume
               </a>
@@ -126,48 +86,8 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
-
-      {/* Floating Icons */}
-      {/* <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
-        {floatingIcons.map(({ Icon, color, delay }, index) => {
-          // Calculate a position on an orbit
-          const angle = (index / floatingIcons.length) * Math.PI * 2;
-          const radiusX = 40 + Math.random() * 20; // vw
-          const radiusY = 30 + Math.random() * 15; // vh
-          
-          return (
-            <motion.div
-              key={index}
-              className="absolute left-1/2 top-1/2 opacity-20"
-              initial={{ x: "-50%", y: "-50%" }}
-              animate={{
-                x: [
-                  `calc(-50% + ${Math.cos(angle) * radiusX}vw)`,
-                  `calc(-50% + ${Math.cos(angle + Math.PI) * radiusX}vw)`,
-                  `calc(-50% + ${Math.cos(angle) * radiusX}vw)`,
-                ],
-                y: [
-                  `calc(-50% + ${Math.sin(angle) * radiusY}vh)`,
-                  `calc(-50% + ${Math.sin(angle + Math.PI) * radiusY}vh)`,
-                  `calc(-50% + ${Math.sin(angle) * radiusY}vh)`,
-                ],
-                rotate: [0, 180, 360],
-              }}
-              transition={{
-                duration: 20 + Math.random() * 10,
-                repeat: Infinity,
-                ease: "linear",
-                delay,
-              }}
-            >
-              <Icon size={40 + Math.random() * 30} color={color} />
-            </motion.div>
-          );
-        })}
-      </div> */}
       
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50">
-        {/* <span className="text-xs font-mono tracking-widest uppercase">Scroll</span> */}
         <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
       </div>
     </section>

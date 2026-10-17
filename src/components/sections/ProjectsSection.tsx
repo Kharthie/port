@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { projects } from '@/lib/data';
-import { CalendarDays, ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function ProjectsSection() {
@@ -39,11 +39,7 @@ export function ProjectsSection() {
                 ))}
               </div>
               
-              <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-gradient transition-all">{project.title}</h3>
-              <div className="mb-4 flex items-center gap-2 text-sm font-mono text-accent">
-                <CalendarDays className="h-4 w-4" />
-                <span>{project.duration}</span>
-              </div>
+              <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-gradient transition-all">{project.title}</h3>
               <p className="text-muted-foreground mb-8 flex-grow leading-relaxed">
                 {project.description}
               </p>

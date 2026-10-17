@@ -113,7 +113,12 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none; /* Hide default cursor for custom cursor */
+  }
+
+  @media (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
   }
 
   body {

@@ -9,6 +9,7 @@ const navLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "AI", href: "#ai" },
+  { name: "Credentials", href: "#certifications" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -68,28 +69,28 @@ export function Navigation() {
       />
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "glass py-4" : "bg-transparent py-6"
+          isScrolled ? "glass py-3 shadow-[0_18px_50px_rgba(0,0,0,0.12)]" : "bg-transparent py-6"
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <a
             href="#hero"
             onClick={(e) => scrollTo(e, "#hero")}
-            className="text-xl font-bold tracking-tighter text-foreground flex items-center gap-2"
+            className="flex items-center gap-3 text-xl font-bold tracking-tight text-foreground"
           >
-            <span className="w-8 h-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-background">
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-lg font-black text-background shadow-[0_12px_30px_rgba(0,245,212,0.18)]">
               R
             </span>
             <span>Kharthie</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollTo(e, link.href)}
-                className={`text-sm font-medium transition-colors hover:text-primary relative ${
+                className={`relative text-sm font-semibold transition-colors hover:text-primary ${
                   activeSection === link.href.substring(1)
                     ? "text-primary"
                     : "text-muted-foreground"
@@ -108,7 +109,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="rounded-full"
+              className="rounded-full border border-border/50 bg-card/40"
             >
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
@@ -119,7 +120,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="rounded-full"
+              className="rounded-full border border-border/50 bg-card/40"
             >
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
