@@ -42,46 +42,6 @@ A modern, high-performance portfolio web application built with **React 18**, **
 
 ---
 
-## 📂 Project Structure
-
-```text
-port/
-├── public/                  # Static assets & icons
-├── src/
-│   ├── components/
-│   │   ├── credentials/     # Certificate canvas cards, issuer vector icons
-│   │   │   ├── CertificateCardPreview.tsx
-│   │   │   └── IssuerIcons.tsx
-│   │   ├── sections/        # Portfolio section components
-│   │   │   ├── HeroSection.tsx
-│   │   │   ├── AboutSection.tsx
-│   │   │   ├── SkillsSection.tsx
-│   │   │   ├── ProjectsSection.tsx
-│   │   │   ├── ExperienceSection.tsx
-│   │   │   ├── AIExpertiseSection.tsx
-│   │   │   ├── CertificationsSection.tsx
-│   │   │   └── ContactSection.tsx
-│   │   ├── ui/              # Radix UI primitives & design system components
-│   │   ├── CustomCursor.tsx # Hardware-accelerated kinetic physics cursor
-│   │   └── Navigation.tsx   # Fixed frosted navbar with smooth anchor scroll
-│   ├── hooks/               # Custom React hooks (toast, mobile detection)
-│   ├── lib/
-│   │   ├── data.ts          # Personal details, projects, experience & credentials data
-│   │   └── utils.ts         # Class merging & utility helpers
-│   ├── pages/
-│   │   ├── Portfolio.tsx    # Homepage containing all integrated sections
-│   │   ├── Certificates.tsx # Standalone page for /certificate route
-│   │   └── not-found.tsx    # 404 handler
-│   ├── App.tsx              # Router setup & global providers
-│   ├── index.css            # Tailwind theme tokens & glassmorphic utilities
-│   └── main.tsx             # Application bootstrap
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
-```
-
----
-
 ## ⚡ Getting Started
 
 ### Prerequisites
@@ -123,7 +83,7 @@ port/
 ## 👨‍💻 About the Author
 
 **Kharthie Ramakrishnan**  
-*Full Stack Developer | AI Engineer*  
+*GEN AI Full Stack Engineer*  
 - **Location**: Tamil Nadu, India  
 - **Email**: [kharthieramakrishnan@gmail.com](mailto:kharthieramakrishnan@gmail.com)  
 - **LinkedIn**: [linkedin.com/in/kharthie-ramakrishnan-developer](https://www.linkedin.com/in/kharthie-ramakrishnan-developer/)  
