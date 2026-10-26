@@ -58,6 +58,8 @@ export function Navigation() {
         top: (element as HTMLElement).offsetTop,
         behavior: "smooth",
       });
+    } else {
+      window.location.href = `/${href}`;
     }
   };
 
