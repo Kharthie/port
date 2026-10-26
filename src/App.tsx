@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { CustomCursor } from "@/components/CustomCursor";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import Portfolio from "@/pages/Portfolio";
+import CertificatesPage from "@/pages/Certificates";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -14,6 +15,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Portfolio} />
+      <Route path="/certificate" component={CertificatesPage} />
+      <Route path="/certificates" component={CertificatesPage} />
       <Route component={NotFound} />
     </Switch>
   );
